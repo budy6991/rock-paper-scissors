@@ -10,6 +10,8 @@ function computerPlay (){
 }
 
 
+
+
 //Now we have to play a round, and introduce the parameters
 
 
@@ -18,47 +20,57 @@ function playRound (playerSelection, computerSelection) {
 
 //Now we have to  tell to the computer which items wins what item 
 
-if (playerSelection === computerSelection) {
-    
+    if (playerSelection === computerSelection) {        
 
-    console.log("It is a draw!");    
-}
+        console.log("It is a draw!");    
+    }
 
-else if (playerSelection == 'rock' && computerSelection =='paper') {
+    else if (playerSelection == 'rock' && computerSelection =='paper') {
 
-console.log('You lose! paper beats rock')
+    console.log('You lose! paper beats rock')
+    computerScore + 1
 
-}
+    }
 
-else if (playerSelection == 'rock' && computerSelection =='scissors') {
+    else if (playerSelection == 'rock' && computerSelection =='scissors') {
 
-console.log('You win! Rock beats scissors!')
+    console.log('You win! Rock beats scissors!')
+    humanScore +1
 
-}
+    }
 
-else if (playerSelection == 'paper' && computerSelection =='rock') {
+    else if (playerSelection == 'paper' && computerSelection =='rock') {
 
-console.log('You win! paper beats rock!')
+    console.log('You win! paper beats rock!')
+    humanScore + 1
 
-}
+    }
 
-else if (playerSelection == 'paper' && computerSelection =='scissors') {
+    else if (playerSelection == 'paper' && computerSelection =='scissors') {
 
-console.log('You got hoined! scissors beat paper!')
-    
-}
-
-else if (playerSelection == 'scissors' && computerSelection =='rock') {
-
-console.log('You lose! rock hoins scissors!')
+    console.log('You got hoined! scissors beat paper!')
+    computerScore +1
         
-}
+    }
 
-else if (playerSelection == 'scissors' && computerSelection =='paper') {
+    else if (playerSelection == 'scissors' && computerSelection =='rock') {
 
-console.log('You win! Scissors beat paper!')
+    console.log('You lose! rock hoins scissors!')
+    computerScore + 1
             
-}
+    }
+
+    else if (playerSelection == 'scissors' && computerSelection =='paper') {
+
+    console.log('You win! Scissors beat paper!')
+    humanScore + 1
+                
+    }
+
+    else {alert("Cagondios inserta una puta cosa bien hijoputa")}
+
+
+
 }
 
 
@@ -67,6 +79,13 @@ console.log('You win! Scissors beat paper!')
 
 let playerSelection = window.prompt('Insert your choice!');
 let computerSelection = computerPlay();
+let humanScore = 0
+let computerScore = 0 
+
+
+
+
+//Para que el ordendor entienda, le tenemos que dar el valor del resultado e ir sumandoselo al anterior. No sabemos que es el marcador, entonces tendremos que converitr esos resultados a numeros . 
 
 
 playerSelection = playerSelection.toLowerCase()
@@ -79,7 +98,14 @@ console.log(playRound(playerSelection, computerSelection));
 
 function game (){
 
-//Inside of this funcion we need to call the playRound function and then run it for 5 times. 
+
+    for (let i = 0; i < 5; i++) {
+        playerSelection = window.prompt('Insert your choice!');
+        computerSelection = computerPlay();
+        console.log(playerSelection);
+        playRound(playerSelection, computerSelection);
+        
+    }
 
 
 
@@ -88,3 +114,11 @@ function game (){
 }
 
 game()
+
+function score () {
+
+
+
+
+}
+

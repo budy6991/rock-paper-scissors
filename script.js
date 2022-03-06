@@ -1,3 +1,9 @@
+let computerSelection = computerPlay();
+let humanScore = 0
+let computerScore = 0
+
+
+
 function computerPlay (){
     let computerSelection = ["rock","paper","scissors"];
     let randomSelection = computerSelection[Math.floor(Math.random()*computerSelection.length)];
@@ -62,6 +68,7 @@ function game (){
 
     for (let i = 0; i < 5; i++) {
         let playerSelection = window.prompt('Insert your choice!');
+        playerSelection = playerSelection.toLowerCase();
         computerSelection = computerPlay();
         console.log(playerSelection);
         playRound(playerSelection,computerSelection);
@@ -82,8 +89,6 @@ function game (){
 }
 
 
-let computerSelection = computerPlay();
-let humanScore = 0
-let computerScore = 0 
+
 
 game()

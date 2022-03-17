@@ -1,15 +1,20 @@
+let playerSelection
 let computerSelection = computerPlay();
 let humanScore = 0
 let computerScore = 0
 
 
 
+//  Generates the selection of the computer 
+
 function computerPlay (){
     let computerSelection = ["rock","paper","scissors"];
     let randomSelection = computerSelection[Math.floor(Math.random()*computerSelection.length)];
-    console.log(randomSelection);
     return randomSelection;
 }
+
+
+// Compares the selection of the player to the selection of the computer. 
 
 function playRound (playerSelection, computerSelection) {
 
@@ -17,28 +22,28 @@ function playRound (playerSelection, computerSelection) {
         console.log("It is a draw!");    
          }
 
-    else if (playerSelection == 'rock' && computerSelection =='paper') {
+    else if (playerSelection =='rock' && computerSelection =='paper') {
     computerScore++
     console.log('You lose! paper beats rock')
     
 
     }
 
-    else if (playerSelection == 'rock' && computerSelection =='scissors') {
+    else if (playerSelection =='rock'&& computerSelection =='scissors') {
     humanScore++
     console.log('You win! Rock beats scissors!')
    
 
     }
 
-    else if (playerSelection == 'paper' && computerSelection =='rock') {
+    else if (playerSelection =='paper' && computerSelection =='rock') {
     humanScore++
     console.log('You win! paper beats rock!')
     
 
     }
 
-    else if (playerSelection == 'paper' && computerSelection =='scissors') {
+    else if (playerSelection =='paper' && computerSelection =='scissors') {
     computerScore++
     console.log('You got hoined! scissors beat paper!')
     
@@ -61,34 +66,70 @@ function playRound (playerSelection, computerSelection) {
 
     else {alert("Please, insert a valid character")}
 
-
 }
 
-function game (){
+// Creating the buttons and events
 
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = window.prompt('Insert your choice!');
-        playerSelection = playerSelection.toLowerCase();
-        computerSelection = computerPlay();
-        console.log(playerSelection);
-        playRound(playerSelection,computerSelection);
-        console.log(`Computer score = ${computerScore} Your score = ${humanScore}`)
-        }
+const container = document.querySelector('.container')
+
+const rock = document.createElement('button');
+const paper = document.createElement('button');
+const scissors = document.createElement('button')
+
+rock.classList.add('button')
+paper.classList.add('button')
+scissors.classList.add('button')
+
+
+rock.textContent = 'ROCK'
+paper.textContent ='PAPER'
+scissors.textContent = 'SCISSORS'
+
+//Creating the events.
+
+
+rock.addEventListener('click', () => {
+    playerSelection = 'rock';
+    console.log(playerSelection)
+    playRound(playerSelection, computerSelection);
+
+});
+paper.addEventListener('click', () => {
+    playerSelection = 'paper'
+    console.log(playerSelection)
+    playRound(playerSelection, computerSelection);
+   
+});
+scissors.addEventListener('click', () => {
+    playerSelection = 'scissors';
+    console.log(playerSelection)
+    playRound(playerSelection, computerSelection);
     
-    if (computerScore > humanScore){
-        alert('You lost the game!')
-    }
+});
 
-        else if (computerScore==humanScore){
-            console.log('Its a draw!')
-        }
-
-        else {console.log('You won the game!!')}
-    
-
-}
+// Game creation 
 
 
 
+// Score holder
 
-game()
+const totalScore = document.createElement('div');
+const scoreHuman = document.createElement('h4');
+const scoreComputer = document.createElement('h4')
+totalScore.appendChild(scoreHuman);
+totalScore.appendChild(scoreComputer);
+
+totalScore.classList.add('totalScore');
+scoreHuman.textContent = `Human score = ${humanScore}`
+scoreComputer.textContent = `Computer score = ${computerScore}`
+
+
+
+
+// Output - browser
+
+
+container.appendChild(rock)
+container.appendChild(paper)
+container.appendChild(scissors)
+container.appendChild(totalScore)

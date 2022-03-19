@@ -1,4 +1,4 @@
-.container {
+.container, .containerTwo {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -19,9 +19,11 @@
 
 .totalScore, .scoreComputer, .scoreHuman{
     padding: 50px;
-    margin: 50px;
+
     box-shadow: 5px 2px 4px #4c4444;
     background-image: linear-gradient(rgb(59, 104, 201), rgb(107, 197, 238));
     color: white;
     border-radius: 15px;
 }
+
+

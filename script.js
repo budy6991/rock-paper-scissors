@@ -25,42 +25,42 @@ function playRound (playerSelection, computerSelection) {
     else if (playerSelection =='rock' && computerSelection =='paper') {
     computerScore++
     console.log('You lose! paper beats rock')
-    
+    return computerScore
 
     }
 
     else if (playerSelection =='rock'&& computerSelection =='scissors') {
     humanScore++
     console.log('You win! Rock beats scissors!')
-   
+    return humanScore
 
     }
 
     else if (playerSelection =='paper' && computerSelection =='rock') {
     humanScore++
     console.log('You win! paper beats rock!')
-    
+    return humanScore
 
     }
 
     else if (playerSelection =='paper' && computerSelection =='scissors') {
     computerScore++
     console.log('You got hoined! scissors beat paper!')
-    
+    return computerScore
         
     }
 
     else if (playerSelection == 'scissors' && computerSelection =='rock') {
     computerScore++
     console.log('You lose! rock hoins scissors!')
-    
+    return computerScore
             
     }
 
     else if (playerSelection == 'scissors' && computerSelection =='paper') {
     humanScore++
     console.log('You win! Scissors beat paper!')
-    
+    return humanScore
                 
     }
 
@@ -85,33 +85,11 @@ rock.textContent = 'ROCK'
 paper.textContent ='PAPER'
 scissors.textContent = 'SCISSORS'
 
-//Creating the events.
+// Creating the score holder
 
 
-rock.addEventListener('click', () => {
-    playerSelection = 'rock';
-    console.log(playerSelection)
-    playRound(playerSelection, computerSelection);
+const containerTwo = document.querySelector('.containerTwo')
 
-});
-paper.addEventListener('click', () => {
-    playerSelection = 'paper'
-    console.log(playerSelection)
-    playRound(playerSelection, computerSelection);
-   
-});
-scissors.addEventListener('click', () => {
-    playerSelection = 'scissors';
-    console.log(playerSelection)
-    playRound(playerSelection, computerSelection);
-    
-});
-
-// Game creation 
-
-
-
-// Score holder
 
 const totalScore = document.createElement('div');
 const scoreHuman = document.createElement('h4');
@@ -120,8 +98,103 @@ totalScore.appendChild(scoreHuman);
 totalScore.appendChild(scoreComputer);
 
 totalScore.classList.add('totalScore');
-scoreHuman.textContent = `Human score = ${humanScore}`
-scoreComputer.textContent = `Computer score = ${computerScore}`
+
+
+    scoreHuman.textContent = `Human score = ${humanScore}`
+    scoreComputer.textContent = `Computer score = ${computerScore}`
+
+//Creating the events.
+
+
+rock.addEventListener('click', () => {
+
+    
+    
+
+    playerSelection = 'rock';
+    console.log(playerSelection)
+    playRound(playerSelection, computerPlay());
+    scoreHuman.textContent = `Human score = ${humanScore}`
+    scoreComputer.textContent = `Computer score = ${computerScore}`
+    if(computerScore == 5){
+        humanScore = 0 
+        computerScore =0
+        scoreHuman.textContent = `Human score = ${humanScore}`
+        scoreComputer.textContent = `Computer score = ${computerScore}`
+        alert('You lost!')
+        
+    }
+    else if (humanScore == 5){
+        humanScore = 0 
+        computerScore =0
+        scoreHuman.textContent = `Human score = ${humanScore}`
+        scoreComputer.textContent = `Computer score = ${computerScore}`
+        alert('You won!')
+    }
+});
+
+
+
+paper.addEventListener('click', () => {
+    playerSelection = 'paper'
+    console.log(playerSelection)
+    playRound(playerSelection, computerPlay());
+    scoreHuman.textContent = `Human score = ${humanScore}`
+    scoreComputer.textContent = `Computer score = ${computerScore}`
+    if(computerScore == 5){
+        humanScore = 0 
+        computerScore =0
+        scoreHuman.textContent = `Human score = ${humanScore}`
+        scoreComputer.textContent = `Computer score = ${computerScore}`
+        alert('You lost!')
+    
+
+    }
+    else if (humanScore == 5){
+        humanScore = 0 
+        computerScore =0
+        scoreHuman.textContent = `Human score = ${humanScore}`
+        scoreComputer.textContent = `Computer score = ${computerScore}`
+        alert('You won!')
+        
+    }
+});
+
+scissors.addEventListener('click', () => {
+    playerSelection = 'scissors';
+    console.log(playerSelection)
+    playRound(playerSelection, computerPlay());
+    scoreHuman.textContent = `Human score = ${humanScore}`
+    scoreComputer.textContent = `Computer score = ${computerScore}`
+    if(computerScore == 5){
+        humanScore = 0 
+        computerScore =0
+        scoreHuman.textContent = `Human score = ${humanScore}`
+        scoreComputer.textContent = `Computer score = ${computerScore}`
+        alert('You lost!')
+    }
+
+    else if (humanScore == 5){
+        humanScore = 0 
+        computerScore =0
+        scoreHuman.textContent = `Human score = ${humanScore}`
+        scoreComputer.textContent = `Computer score = ${computerScore}`
+        alert('You won!')
+    };
+
+});
+
+
+// Winner
+
+
+
+
+
+
+
+
+
 
 
 
@@ -132,4 +205,4 @@ scoreComputer.textContent = `Computer score = ${computerScore}`
 container.appendChild(rock)
 container.appendChild(paper)
 container.appendChild(scissors)
-container.appendChild(totalScore)
+containerTwo.appendChild(totalScore)

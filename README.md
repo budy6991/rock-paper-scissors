@@ -1,1 +1,1 @@
-See my project <a src = https://budy6991.github.io/rock-paper-scissors/>here</a>
+See my project <a href = https://budy6991.github.io/rock-paper-scissors/>here</a>
